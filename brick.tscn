@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj5l0pw0xdco4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ah3o4"]
+size = Vector2(40, 10)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_u8cir"]
+size = Vector2(40, 10)
+
+[node name="Brick" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ah3o4")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_u8cir")
