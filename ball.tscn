@@ -1,3 +1,31 @@
-[gd_scene format=3 uid="uid://cwoxsrkx8dmwc"]
+[gd_scene load_steps=5 format=3 uid="uid://cwoxsrkx8dmwc"]
+
+[ext_resource type="Script" path="res://ball.gd" id="1_hpwpb"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5qo8e"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ndtjt"]
+radius = 15.0
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vv31x"]
+size = Vector2(30, 30)
 
 [node name="Ball" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_5qo8e")
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_hpwpb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ndtjt")
+
+[node name="StartTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_vv31x")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
