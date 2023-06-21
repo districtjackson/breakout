@@ -15,6 +15,8 @@ size = Vector2(30, 30)
 [node name="Ball" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_5qo8e")
 gravity_scale = 0.0
+max_contacts_reported = 1
+contact_monitor = true
 lock_rotation = true
 script = ExtResource("1_hpwpb")
 
@@ -28,4 +30,5 @@ one_shot = true
 texture = SubResource("PlaceholderTexture2D_vv31x")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

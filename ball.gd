@@ -3,7 +3,7 @@ extends RigidBody2D
 signal miss
 
 @export var start_delay = 2
-@export var speed = 100
+@export var speed = 500
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,5 +30,10 @@ func _on_start_timer_timeout():
 
 
 func _on_body_entered(body):
+	pass
+
+
+func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+	print("Body Entered")
 	if body is Area2D:
-		pass # Replace with logic for the bounce
+		print("Hit Paddle")

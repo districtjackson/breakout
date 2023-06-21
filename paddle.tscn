@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://paddle.gd" id="1_b2kgw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lmcw3"]
-size = Vector2(140, 20)
+size = Vector2(140, 1)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7rcds"]
 size = Vector2(140, 20)
@@ -12,6 +12,7 @@ size = Vector2(140, 20)
 script = ExtResource("1_b2kgw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
 shape = SubResource("RectangleShape2D_lmcw3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
