@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwoxsrkx8dmwc"]
+[gd_scene load_steps=6 format=3 uid="uid://cwoxsrkx8dmwc"]
 
 [ext_resource type="Script" path="res://ball.gd" id="1_hpwpb"]
 
@@ -11,6 +11,9 @@ radius = 15.0
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vv31x"]
 size = Vector2(30, 30)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n51av"]
+radius = 15.0
 
 [node name="Ball" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_5qo8e")
@@ -30,6 +33,10 @@ one_shot = true
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("PlaceholderTexture2D_vv31x")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_n51av")
+
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

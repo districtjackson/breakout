@@ -28,12 +28,5 @@ func _on_start_timer_timeout():
 
 	apply_central_impulse(serve_vector) 
 
-
-func _on_body_entered(body):
-	pass
-
-
-func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	print("Body Entered")
-	if body is Area2D:
-		print("Hit Paddle")
+func _on_area_2d_area_entered(area):
+	print("Hit Paddle")
