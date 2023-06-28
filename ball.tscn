@@ -18,6 +18,7 @@ radius = 15.0
 [node name="Ball" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_5qo8e")
 gravity_scale = 0.0
+continuous_cd = 1
 max_contacts_reported = 1
 contact_monitor = true
 lock_rotation = true
@@ -40,3 +41,4 @@ shape = SubResource("CircleShape2D_n51av")
 
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]
