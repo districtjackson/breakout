@@ -33,11 +33,21 @@ func _on_area_2d_area_entered(area):
 	
 	apply_central_impulse(-current_velocity) # Cancel out current vector
 	
-	# Apply new vector with same magnitude as previous one, but a direction based on where paddle was hit
+	# Apply new vector with same magnitude as previous one, 
+	# but a direction based on where paddle was hit
+	var collision_x_value = self.position.x - area.position.x 
+	print(collision_x_value)
 	
-	# apply_central_impulse()
+	var new_velocity = Vector2(collision_x_value / 180, -1)
+	
+	apply_central_impulse(new_velocity)
 
+"""
 func _on_area_2d_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	
+	# All I actually need is the x positions for both bodies, 
+	# and I can get the colision point from there.
+	
 	var body_shape_owner_id = area.shape_find_owner(area_shape_index)
 	var body_shape_owner = area.shape_owner_get_owner(body_shape_owner_id)
 	var body_shape_2d = area.shape_owner_get_shape(body_shape_owner_id, 0)
@@ -52,3 +62,5 @@ func _on_area_2d_area_shape_entered(area_rid, area, area_shape_index, local_shap
 									body_shape_2d,
 									body_global_transform)
 	print(collision_points)
+	print(area.position.x)
+"""
