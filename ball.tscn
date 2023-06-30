@@ -40,5 +40,4 @@ texture = SubResource("PlaceholderTexture2D_vv31x")
 shape = SubResource("CircleShape2D_n51av")
 
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]
