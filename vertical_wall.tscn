@@ -1,9 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://lb8p17gfscx"]
+[gd_scene load_steps=3 format=3 uid="uid://lb8p17gfscx"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://bf7xfhnsc07ag" path="res://wall.tres" id="1_ioxus"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ahitr"]
 size = Vector2(800, 20)
 
 [node name="Vertical Wall" type="StaticBody2D"]
+physics_material_override = ExtResource("1_ioxus")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(400, -10)

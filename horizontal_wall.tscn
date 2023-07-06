@@ -1,9 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://bp0rj2867ns2f"]
+[gd_scene load_steps=3 format=3 uid="uid://bp0rj2867ns2f"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://bf7xfhnsc07ag" path="res://wall.tres" id="1_4dn74"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_58lw7"]
 size = Vector2(36, 1000)
 
 [node name="Horizontal Wall" type="StaticBody2D"]
+physics_material_override = ExtResource("1_4dn74")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-18, 500)

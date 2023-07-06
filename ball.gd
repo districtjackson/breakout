@@ -4,6 +4,7 @@ signal miss
 
 @export var start_delay = 2
 @export var speed = 500
+@export var brick: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,7 +29,6 @@ func _on_start_timer_timeout():
 
 	apply_central_impulse(serve_vector) 
 
-
 func _on_area_2d_area_shape_entered(_area_rid, area, area_shape_index, _local_shape_index):
 	
 	# Cancel out current vector
@@ -47,3 +47,8 @@ func _on_area_2d_area_shape_entered(_area_rid, area, area_shape_index, _local_sh
 				* current_velocity.length()
 	
 	apply_central_impulse(new_velocity)
+
+func _on_body_entered(body):
+	
+	if body.has_method("destroy"):
+		body.destroy()

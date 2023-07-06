@@ -1,4 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bj5l0pw0xdco4"]
+[gd_scene load_steps=5 format=3 uid="uid://bj5l0pw0xdco4"]
+
+[ext_resource type="Script" path="res://brick.gd" id="1_6by52"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uout1"]
+friction = 0.0
+bounce = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ah3o4"]
 size = Vector2(40, 10)
@@ -7,6 +13,8 @@ size = Vector2(40, 10)
 size = Vector2(40, 10)
 
 [node name="Brick" type="StaticBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_uout1")
+script = ExtResource("1_6by52")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ah3o4")
