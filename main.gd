@@ -6,6 +6,7 @@ extends Node2D
 
 var remaining_bricks = 0
 var lives = 0
+var bricks_destroyed = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,6 +25,7 @@ func _process(_delta):
 
 func _on_ball_brick_destroyed():
 	remaining_bricks -= 1
+	bricks_destroyed += 1
 	
 	if(remaining_bricks <= 0):
 		_generate_bricks()
