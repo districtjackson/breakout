@@ -29,12 +29,13 @@ func _generate_bricks():
 	
 	var bricks_added = 0
 	
-	for i in range(40,750,50):
-		var brick = brick_scene.instantiate()
-		add_child(brick)
-		
-		brick.position = Vector2(i, 110)
-		
-		bricks_added += 1
+	for i in range(110, 310, 20):
+		for j in range(50,775,50):	
+			var brick = brick_scene.instantiate()
+			add_child(brick)
+			
+			brick.position = Vector2(j, i)
+			
+			bricks_added += 1
 		
 	remaining_bricks += bricks_added

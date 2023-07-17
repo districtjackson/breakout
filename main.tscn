@@ -20,16 +20,13 @@ position = Vector2(837, 0)
 position = Vector2(0, 100)
 
 [node name="Paddle" parent="." instance=ExtResource("3_cqgjn")]
-position = Vector2(400, 974)
+position = Vector2(396, 766)
 
 [node name="Ball" parent="." instance=ExtResource("5_j31nx")]
-position = Vector2(396, 787)
+position = Vector2(392, 519)
 brick = ExtResource("6_oesq4")
 
 [node name="Brick" parent="." instance=ExtResource("6_oesq4")]
-position = Vector2(226, 611)
-
-[node name="Brick2" parent="." instance=ExtResource("6_oesq4")]
-position = Vector2(564, 619)
+position = Vector2(389, 353)
 
 [connection signal="brick_destroyed" from="Ball" to="." method="_on_ball_brick_destroyed"]

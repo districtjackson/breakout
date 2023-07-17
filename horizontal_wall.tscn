@@ -3,11 +3,11 @@
 [ext_resource type="PhysicsMaterial" uid="uid://bf7xfhnsc07ag" path="res://wall.tres" id="1_4dn74"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_58lw7"]
-size = Vector2(36, 1000)
+size = Vector2(36, 800)
 
 [node name="Horizontal Wall" type="StaticBody2D"]
 physics_material_override = ExtResource("1_4dn74")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-18, 500)
+position = Vector2(-18, 400)
 shape = SubResource("RectangleShape2D_58lw7")
