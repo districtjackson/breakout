@@ -1,6 +1,7 @@
 extends RigidBody2D
 
 signal miss
+signal brick_destroyed
 
 @export var start_delay = 2
 @export var speed = 500
@@ -52,3 +53,4 @@ func _on_body_entered(body):
 	
 	if body.has_method("destroy"):
 		body.destroy()
+		brick_destroyed.emit()
