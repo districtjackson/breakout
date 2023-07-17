@@ -2,8 +2,10 @@ extends Node2D
 
 @export var simulation_tps = 60
 @export var brick_scene: PackedScene
+@export var ball_scene: PackedScene
 
 var remaining_bricks = 0
+var lives = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,7 +14,9 @@ func _ready():
 	
 # Setup and start game
 func start():
+	lives = 3
 	_generate_bricks()
+	_spawn_ball()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -39,3 +43,20 @@ func _generate_bricks():
 			bricks_added += 1
 		
 	remaining_bricks += bricks_added
+
+
+func _on_ball_miss():
+	lives -= 1
+	
+	if(lives <= 0):
+		pass # Game over
+	else: # If lives remaining, spawn new ball
+		_spawn_ball()
+		
+func _spawn_ball():
+	var ball = ball_scene.instantiate()
+	add_child(ball)
+	
+	ball.position = Vector2(400, 400)
+	ball.brick_destroyed.connect(_on_ball_brick_destroyed)
+	ball.miss.connect(_on_ball_miss)

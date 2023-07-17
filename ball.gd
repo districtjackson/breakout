@@ -5,7 +5,6 @@ signal brick_destroyed
 
 @export var start_delay = 2
 @export var speed = 500
-@export var brick: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,7 +12,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if(position.x >= 1000):
+	if(position.y >= 800):
+		print("Miss")
 		miss.emit()
 		queue_free()
 

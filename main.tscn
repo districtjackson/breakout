@@ -10,6 +10,7 @@
 [node name="Main" type="Node2D"]
 script = ExtResource("1_kw6dv")
 brick_scene = ExtResource("6_oesq4")
+ball_scene = ExtResource("5_j31nx")
 
 [node name="Right Wall" parent="." instance=ExtResource("1_40036")]
 
@@ -21,12 +22,3 @@ position = Vector2(0, 100)
 
 [node name="Paddle" parent="." instance=ExtResource("3_cqgjn")]
 position = Vector2(396, 766)
-
-[node name="Ball" parent="." instance=ExtResource("5_j31nx")]
-position = Vector2(392, 519)
-brick = ExtResource("6_oesq4")
-
-[node name="Brick" parent="." instance=ExtResource("6_oesq4")]
-position = Vector2(389, 353)
-
-[connection signal="brick_destroyed" from="Ball" to="." method="_on_ball_brick_destroyed"]
