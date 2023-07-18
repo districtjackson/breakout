@@ -51,7 +51,7 @@ func _on_ball_miss():
 	lives -= 1
 	
 	if(lives <= 0):
-		pass # Game over
+		_game_over()
 	else: # If lives remaining, spawn new ball
 		_spawn_ball()
 		
@@ -62,3 +62,10 @@ func _spawn_ball():
 	ball.position = Vector2(400, 400)
 	ball.brick_destroyed.connect(_on_ball_brick_destroyed)
 	ball.miss.connect(_on_ball_miss)
+	
+func _game_over():
+	for i in self.get_children():
+		if(i.has_method("destroy")):
+			i.queue_free()
+			
+	$Ball.queue_free()
