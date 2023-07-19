@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpetljpg0g05c"]
+
+[ext_resource type="Script" path="res://hud.gd" id="1_8gpfq"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8gpfq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Score" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+
+[node name="Lives" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0

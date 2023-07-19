@@ -6,7 +6,6 @@ extends Node2D
 
 var remaining_bricks = 0
 var lives = 0
-var bricks_destroyed = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,6 +15,7 @@ func _ready():
 # Setup and start game
 func start():
 	lives = 3
+	$HUD.game_start()
 	_generate_bricks()
 	_spawn_ball()
 
@@ -25,7 +25,7 @@ func _process(_delta):
 
 func _on_ball_brick_destroyed():
 	remaining_bricks -= 1
-	bricks_destroyed += 1
+	$HUD.increase_score()
 	
 	if(remaining_bricks <= 0):
 		_generate_bricks()
@@ -43,16 +43,17 @@ func _generate_bricks():
 			brick.position = Vector2(j, i)
 			
 			bricks_added += 1
-		
+	
+	# Add number of new bricks to remaining brick count
 	remaining_bricks += bricks_added
-
 
 func _on_ball_miss():
 	lives -= 1
 	
 	if(lives <= 0):
 		_game_over()
-	else: # If lives remaining, spawn new ball
+	else: # If lives remaining, decrease score counter and spawn new ball
+		$HUD.change_lives(lives)
 		_spawn_ball()
 		
 func _spawn_ball():
@@ -60,12 +61,15 @@ func _spawn_ball():
 	add_child(ball)
 	
 	ball.position = Vector2(400, 400)
+	# Reconnect ball's signals to main
 	ball.brick_destroyed.connect(_on_ball_brick_destroyed)
 	ball.miss.connect(_on_ball_miss)
 	
 func _game_over():
+	# Delete all remaining bricks
 	for i in self.get_children():
 		if(i.has_method("destroy")):
 			i.queue_free()
-			
-	$Ball.queue_free()
+		
+	# Call HUD
+

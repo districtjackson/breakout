@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7blaql7auf81"]
+[gd_scene load_steps=8 format=3 uid="uid://b7blaql7auf81"]
 
 [ext_resource type="PackedScene" uid="uid://bp0rj2867ns2f" path="res://horizontal_wall.tscn" id="1_40036"]
 [ext_resource type="Script" path="res://main.gd" id="1_kw6dv"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c8blrw6e4dep1" path="res://paddle.tscn" id="3_cqgjn"]
 [ext_resource type="PackedScene" uid="uid://cwoxsrkx8dmwc" path="res://ball.tscn" id="5_j31nx"]
 [ext_resource type="PackedScene" uid="uid://bj5l0pw0xdco4" path="res://brick.tscn" id="6_oesq4"]
+[ext_resource type="PackedScene" uid="uid://dpetljpg0g05c" path="res://hud.tscn" id="7_eacag"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_kw6dv")
@@ -22,3 +23,5 @@ position = Vector2(0, 100)
 
 [node name="Paddle" parent="." instance=ExtResource("3_cqgjn")]
 position = Vector2(396, 766)
+
+[node name="HUD" parent="." instance=ExtResource("7_eacag")]
