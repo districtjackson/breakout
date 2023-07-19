@@ -25,3 +25,5 @@ position = Vector2(0, 100)
 position = Vector2(396, 766)
 
 [node name="HUD" parent="." instance=ExtResource("7_eacag")]
+
+[connection signal="start" from="HUD" to="." method="_start"]

@@ -10,12 +10,10 @@ var lives = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Engine.set_physics_ticks_per_second(simulation_tps)
-	start() # Temporary, HUD will call this later
 	
 # Setup and start game
-func start():
+func _start():
 	lives = 3
-	$HUD.game_start()
 	_generate_bricks()
 	_spawn_ball()
 

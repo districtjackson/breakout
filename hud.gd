@@ -1,8 +1,13 @@
 extends Control
 
+signal start
+
 var score = 0
 
-func game_start():
+func _game_start():
+	start.emit()
+	$"CanvasLayer/Start Game".hide()
+	$"CanvasLayer/Quit Game".hide()
 	change_lives(3)
 	$CanvasLayer/Score.set_text("Score: " + str(score))
 
@@ -17,3 +22,6 @@ func change_lives(lives):
 func increase_score():
 	score += 1
 	$CanvasLayer/Score.set_text("Score: " + str(score))
+	
+func _quit_game():
+	get_tree().quit()
