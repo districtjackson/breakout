@@ -69,5 +69,5 @@ func _game_over():
 		if(i.has_method("destroy")):
 			i.queue_free()
 		
-	# Call HUD
+	$HUD.game_over()
 

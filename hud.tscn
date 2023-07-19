@@ -14,6 +14,7 @@ script = ExtResource("1_8gpfq")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Score" type="Label" parent="CanvasLayer"]
+visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -22,6 +23,7 @@ offset_bottom = 23.0
 grow_horizontal = 0
 
 [node name="Lives" type="Label" parent="CanvasLayer"]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 
@@ -52,6 +54,10 @@ offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Quit"
+
+[node name="Game Over" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
 
 [connection signal="pressed" from="CanvasLayer/Start Game" to="." method="_game_start"]
 [connection signal="pressed" from="CanvasLayer/Quit Game" to="." method="_quit_game"]
