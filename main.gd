@@ -34,11 +34,14 @@ func _generate_bricks():
 	var bricks_added = 0
 	
 	for i in range(110, 310, 20):
+		var row_color = Color(randf(), randf(), randf())
+		
 		for j in range(50,775,50):	
 			var brick = brick_scene.instantiate()
 			add_child(brick)
 			
 			brick.position = Vector2(j, i)
+			brick.modulate = row_color
 			
 			bricks_added += 1
 	
