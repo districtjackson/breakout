@@ -3,9 +3,11 @@ extends Node2D
 @export var simulation_tps = 60
 @export var brick_scene: PackedScene
 @export var ball_scene: PackedScene
+@export var number_of_brick_rows = 10
 
 var remaining_bricks = 0
 var lives = 0
+var paddle_narrowed = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,9 +35,11 @@ func _generate_bricks():
 	
 	var bricks_added = 0
 	
-	for i in range(110, 310, 20):
+	# Rows
+	for i in range(110, 110 + (number_of_brick_rows * 20), 20):
 		var row_color = Color(randf(), randf(), randf())
 		
+		# Columns
 		for j in range(50,775,50):	
 			var brick = brick_scene.instantiate()
 			add_child(brick)
@@ -47,6 +51,10 @@ func _generate_bricks():
 	
 	# Add number of new bricks to remaining brick count
 	remaining_bricks += bricks_added
+
+func _on_ceiling_hit():
+	if(!paddle_narrowed):
+		$Paddle.make_narrower()
 
 func _on_ball_miss():
 	lives -= 1
@@ -65,6 +73,7 @@ func _spawn_ball():
 	# Reconnect ball's signals to main
 	ball.brick_destroyed.connect(_on_ball_brick_destroyed)
 	ball.miss.connect(_on_ball_miss)
+	ball.ceiling_hit.connect(_on_ceiling_hit)
 	
 func _game_over():
 	# Delete all remaining bricks

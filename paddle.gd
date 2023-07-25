@@ -21,3 +21,7 @@ func _process(delta):
 				
 	position += velocity * delta * speed
 	position.x = clamp(position.x, 0 + paddle_length, screen_size.x - paddle_length)
+
+# Shrinks paddle when ball hits ceiling (Ball -> Main -> Here
+func make_narrower():
+	$CollisionShape2D.shape.size.x = 100

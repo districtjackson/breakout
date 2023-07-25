@@ -2,6 +2,7 @@ extends RigidBody2D
 
 signal miss
 signal brick_destroyed
+signal ceiling_hit
 
 @export var start_delay = 2
 @export var speed = 500
@@ -12,10 +13,15 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	# Detects when player misses ball with paddle
 	if(position.y >= 800):
 		print("Miss")
 		miss.emit()
 		queue_free()
+	
+	# If ball hits ceiling, starts the paddle narrowing
+	if(position.y <= 120):
+		ceiling_hit.emit()
 
 func _on_start_timer_timeout():
 	var random_x
