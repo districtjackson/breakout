@@ -16,6 +16,7 @@ func _ready():
 # Setup and start game
 func _start():
 	lives = 3
+	_get_high_score()
 	_generate_bricks()
 	_spawn_ball()
 
@@ -83,3 +84,49 @@ func _game_over():
 		
 	$HUD.game_over()
 
+# Saves provided high score at user://breakout.save
+func _save_high_score(high_score):
+	print("Saving game...")
+	
+	var save_dict = {
+		"score" : high_score
+	}
+	
+	var save = FileAccess.open("user://breakout.save", FileAccess.WRITE)
+	
+	var json_string = JSON.stringify(save_dict)
+	
+	save.store_line(json_string)
+	
+	print("High score saved")
+	
+	return
+	
+func _get_high_score():
+	# See if a save high score even exists
+	if not FileAccess.file_exists("user://breakout.save"):
+		print("Save game file does not exist")
+		return # Error! We don't have a save to load.
+
+	# Open save file
+	var save = FileAccess.open("user://breakout.save", FileAccess.READ)
+	
+	# Get JSON line
+	var json_string = save.get_line()
+	
+	# Helper class to interact with JSON
+	var json = JSON.new()
+	
+	# Error checking
+	var parse_result = json.parse(json_string)
+	if not parse_result == OK:
+		print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
+	
+	# Get data from JSON object
+	var node_data = json.get_data()
+	
+	$HUD.set_high_score(node_data["score"])
+	
+	print("High Score Retrieved")
+	
+	return

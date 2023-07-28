@@ -27,4 +27,5 @@ position = Vector2(396, 766)
 
 [node name="HUD" parent="." instance=ExtResource("7_eacag")]
 
+[connection signal="high_score_beaten" from="HUD" to="." method="_save_high_score"]
 [connection signal="start" from="HUD" to="." method="_start"]
