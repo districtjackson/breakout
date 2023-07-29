@@ -15,8 +15,8 @@ func _game_start():
 	# Setup HUD counts
 	score = 0
 	change_lives(3)
-	$CanvasLayer/Score.set_text("Score: " + str(score))
-	$CanvasLayer/HighScore.set_text("High Score: " + str(high_score))
+	$CanvasLayer/Score.set_text(str(score))
+	$CanvasLayer/HighScore.set_text("High Score:\n" + str(high_score))
 	
 	# Show/hide necessary HUD elements
 	$"CanvasLayer/Start Game".hide()
@@ -24,6 +24,7 @@ func _game_start():
 	$CanvasLayer/Score.show()
 	$CanvasLayer/Lives.show()
 	$CanvasLayer/HighScore.show()
+	$Bar.show()
 
 func change_lives(lives):
 	if(lives == 3):
@@ -36,12 +37,13 @@ func change_lives(lives):
 # Increment score each time a brick is destroyed
 func increase_score():
 	score += 1
-	$CanvasLayer/Score.set_text("Score: " + str(score))
+	$CanvasLayer/Score.set_text(str(score))
 	
 func game_over():
 	$CanvasLayer/Score.hide()
 	$CanvasLayer/Lives.hide()
 	$CanvasLayer/HighScore.hide()
+	$Bar.hide()
 	
 	$"CanvasLayer/Game Over".set_text("Game Over!\nScore: " + str(score))
 	$"CanvasLayer/Game Over".show()

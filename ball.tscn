@@ -1,6 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cwoxsrkx8dmwc"]
 
 [ext_resource type="Script" path="res://ball.gd" id="1_hpwpb"]
+[ext_resource type="Texture2D" uid="uid://ulrh8dmijc0y" path="res://Ball.png" id="2_6xcx2"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5qo8e"]
 friction = 0.0
@@ -8,9 +9,6 @@ bounce = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ndtjt"]
 radius = 15.0
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vv31x"]
-size = Vector2(30, 30)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n51av"]
 radius = 15.0
@@ -32,7 +30,7 @@ shape = SubResource("CircleShape2D_ndtjt")
 one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("PlaceholderTexture2D_vv31x")
+texture = ExtResource("2_6xcx2")
 
 [node name="Area2D" type="Area2D" parent="."]
 

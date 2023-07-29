@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dpetljpg0g05c"]
+[gd_scene load_steps=4 format=3 uid="uid://dpetljpg0g05c"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_8gpfq"]
+[ext_resource type="Theme" uid="uid://cydbhm5uyy86t" path="res://ui.tres" id="2_xqq4b"]
+[ext_resource type="Texture2D" uid="uid://cg5opsa5khl1o" path="res://Bar.png" id="3_8pewq"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -22,34 +24,48 @@ offset_left = -20.0
 offset_right = 20.0
 offset_bottom = 23.0
 grow_horizontal = 2
+theme = ExtResource("2_xqq4b")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HighScore" type="Label" parent="CanvasLayer"]
 visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 23.0
+offset_left = -60.0
+offset_top = 5.0
+offset_right = -20.0
+offset_bottom = 47.0
 grow_horizontal = 0
+theme = ExtResource("2_xqq4b")
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Lives" type="Label" parent="CanvasLayer"]
 visible = false
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 30.0
+offset_right = 70.0
+offset_bottom = 69.0
+theme = ExtResource("2_xqq4b")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Start Game" type="Button" parent="CanvasLayer"]
+[node name="Game Over" type="Label" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -23.0
-offset_top = -42.0
-offset_right = 23.0
-offset_bottom = -11.0
+offset_left = -40.0
+offset_top = -34.5
+offset_bottom = 34.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Start"
+theme = ExtResource("2_xqq4b")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Quit Game" type="Button" parent="CanvasLayer"]
 anchors_preset = 8
@@ -57,17 +73,34 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -22.0
-offset_top = 5.0
-offset_right = 20.0
-offset_bottom = 36.0
+offset_left = -100.0
+offset_top = 10.0
+offset_right = 100.0
+offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_xqq4b")
 text = "Quit"
 
-[node name="Game Over" type="Label" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="Start Game" type="Button" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -60.0
+offset_right = 100.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_xqq4b")
+text = "Start"
 
-[connection signal="pressed" from="CanvasLayer/Start Game" to="." method="_game_start"]
+[node name="Bar" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(400, 85)
+texture = ExtResource("3_8pewq")
+
 [connection signal="pressed" from="CanvasLayer/Quit Game" to="." method="_quit_game"]
+[connection signal="pressed" from="CanvasLayer/Start Game" to="." method="_game_start"]
