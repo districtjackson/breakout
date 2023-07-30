@@ -5,6 +5,8 @@ extends Area2D
 var paddle_length
 var screen_size
 
+var shrunken = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -22,6 +24,15 @@ func _process(delta):
 	position += velocity * delta * speed
 	position.x = clamp(position.x, 0 + paddle_length, screen_size.x - paddle_length)
 
-# Shrinks paddle when ball hits ceiling (Ball -> Main -> Here
-func make_narrower():
-	$CollisionShape2D.shape.size.x = 100
+# Shrinks paddle when ball hits ceiling (Ball -> Main -> Here), and unshrinks it when ball respawns and game ends
+func change_size():
+	if(shrunken):
+		$CollisionShape2D.shape.size.x = 140
+		$SmallSprite.hide()
+		$LargeSprite.show()
+		shrunken = false
+	else:
+		$CollisionShape2D.shape.size.x = 100
+		$LargeSprite.hide()
+		$SmallSprite.show()
+		shrunken = true

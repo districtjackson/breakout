@@ -15,7 +15,12 @@ func _ready():
 	
 # Setup and start game
 func _start():
+	# Reset game states
 	lives = 3
+	if(paddle_narrowed):
+		$Paddle.change_size()
+		paddle_narrowed = false
+		
 	_get_high_score()
 	_generate_bricks()
 	_spawn_ball()
@@ -55,16 +60,22 @@ func _generate_bricks():
 
 func _on_ceiling_hit():
 	if(!paddle_narrowed):
-		$Paddle.make_narrower()
+		$Paddle.change_size()
+		paddle_narrowed = true
 
 func _on_ball_miss():
 	lives -= 1
 	
 	if(lives <= 0):
-		_game_over()
+		_game_over()	
 	else: # If lives remaining, decrease score counter and spawn new ball
 		$HUD.change_lives(lives)
 		_spawn_ball()
+	
+	# Unshrink paddle
+	if(paddle_narrowed):
+		$Paddle.change_size()
+		paddle_narrowed = false
 		
 func _spawn_ball():
 	var ball = ball_scene.instantiate()

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8blrw6e4dep1"]
+[gd_scene load_steps=5 format=3 uid="uid://c8blrw6e4dep1"]
 
 [ext_resource type="Script" path="res://paddle.gd" id="1_b2kgw"]
 [ext_resource type="Texture2D" uid="uid://bvn8pgo4prajm" path="res://Paddle.png" id="2_wwnud"]
+[ext_resource type="Texture2D" uid="uid://c6ruuk3t1jfxx" path="res://ShrunkenPaddle.png" id="3_icxef"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lmcw3"]
 size = Vector2(140, 1)
@@ -14,5 +15,9 @@ speed = 750
 position = Vector2(0, -9)
 shape = SubResource("RectangleShape2D_lmcw3")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="LargeSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_wwnud")
+
+[node name="SmallSprite" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_icxef")
