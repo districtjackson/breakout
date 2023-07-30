@@ -21,6 +21,7 @@ func _game_start():
 	# Show/hide necessary HUD elements
 	$"CanvasLayer/Start Game".hide()
 	$"CanvasLayer/Quit Game".hide()
+	$CanvasLayer/Title.hide()
 	$CanvasLayer/Score.show()
 	$CanvasLayer/Lives.show()
 	$CanvasLayer/HighScore.show()
@@ -56,6 +57,7 @@ func game_over():
 	
 	$"CanvasLayer/Start Game".show()
 	$"CanvasLayer/Quit Game".show()
+	$CanvasLayer/Title.show()
 	
 func _quit_game():
 	get_tree().quit()
