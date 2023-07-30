@@ -44,7 +44,10 @@ func _generate_bricks():
 	
 	# Rows
 	for i in range(110, 110 + (number_of_brick_rows * 20), 20):
-		var row_color = Color(randf(), randf(), randf())
+		
+		var row_color = _generate_color()
+		
+		print(row_color)
 		
 		# Columns
 		for j in range(50,775,50):	
@@ -58,6 +61,38 @@ func _generate_bricks():
 	
 	# Add number of new bricks to remaining brick count
 	remaining_bricks += bricks_added
+
+# Use this to generate random neon colors
+func _generate_color():
+	
+	var red = randf_range(.6, 1)
+	var green = randf_range(.6, 1)
+	var blue = randf_range(.6, 1)
+	
+	# Determines which value to make smaller, as neon colors have two of the rgb parameters
+	# with high values and one with low
+	var null_determiner = randf()
+	
+	# Chooses whether one or two colors value's are lowered
+	if(randf() > 0.5): # One
+		if(null_determiner < .33):
+			red = randf_range(0, .3)
+		elif(null_determiner < .67):
+			green = randf_range(0, .3)
+		else:
+			blue = randf_range(0, .3)
+	else: # Two
+		if(null_determiner < .33):
+			red = randf_range(0, .3)
+			green = randf_range(0, .3)
+		elif(null_determiner < .67):
+			green = randf_range(0, .3)
+			blue = randf_range(0, .3)
+		else:
+			red = randf_range(0, .3)
+			blue = randf_range(0, .3)
+	
+	return Color(red, green, blue)
 
 func _on_ceiling_hit():
 	if(!paddle_narrowed):

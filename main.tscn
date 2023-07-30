@@ -13,7 +13,6 @@ script = ExtResource("1_kw6dv")
 simulation_tps = 120
 brick_scene = ExtResource("6_oesq4")
 ball_scene = ExtResource("5_j31nx")
-number_of_brick_rows = 1
 
 [node name="Right Wall" parent="." instance=ExtResource("1_40036")]
 
