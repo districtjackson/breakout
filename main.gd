@@ -24,6 +24,7 @@ func _start():
 	_get_high_score()
 	_generate_bricks()
 	_spawn_ball()
+	$Paddle.show()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -94,6 +95,7 @@ func _game_over():
 			i.queue_free()
 		
 	$HUD.game_over()
+	$Paddle.hide()
 
 # Saves provided high score at user://breakout.save
 func _save_high_score(high_score):

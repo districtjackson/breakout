@@ -24,6 +24,7 @@ position = Vector2(837, 0)
 position = Vector2(0, 100)
 
 [node name="Paddle" parent="." instance=ExtResource("3_cqgjn")]
+visible = false
 position = Vector2(396, 766)
 
 [node name="HUD" parent="." instance=ExtResource("7_eacag")]
